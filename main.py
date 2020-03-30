@@ -1,7 +1,7 @@
 import math
 
-steps = 500 # number of output points to be calculated
-steps_2 = 50 # number of secondary sources within the slit
+out_pt_count = 500 # number of output points to be calculated
+sec_source_count = 50 # number of secondary sources within the slit
 w=0.02 # wavelength
 b=0.01 # slit diameter
 D=0 #distance from slit to wall
@@ -9,7 +9,7 @@ D=0 #distance from slit to wall
 def setup():
     #draw the background lines
     global D
-    size(500,500) #for those 
+    size(500,500) #width = 500, height = 500
     stroke(0)
     strokeWeight(2)
     background(255)
@@ -23,10 +23,10 @@ def setup():
     
 def draw():
     intensity_plot = {}
-    for i in range(steps): #Loop through wall output points
-        x1 = i*width/steps
-        for u in range(steps_2): # Loop through secondary sources
-            x2 = width*(1-b)/2 + u*b*width/steps_2 
+    for i in range(out_pt_count): #Loop through wall output points
+        x1 = i*width/out_pt_count
+        for u in range(sec_source_count): # Loop through secondary sources
+            x2 = width*(1-b)/2 + u*b*width/sec_source_count
             path_dist = math.sqrt((x1-x2)**2+D**2) #Calculate path distance from secondary source to point on wall
             intensity= (math.cos(path_dist/(w*width)*(TWO_PI))) #Find phase of wavelength with path distance and map from -1 to 1
             #sum intensity to the intensity plot
@@ -35,8 +35,8 @@ def draw():
             else:
                 intensity_plot[i] += intensity
     #draw the intensity plot
-    for i in range(steps):
-        x1 = i*width/steps
+    for i in range(out_pt_count):
+        x1 = i*width/out_pt_count
         stroke((intensity_plot[i]**2)/10)
         line(x1,height/4,x1,height/5);
         
