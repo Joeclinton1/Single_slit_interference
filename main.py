@@ -1,7 +1,7 @@
 import math
 
 out_cnt = 500 # number of output points to be calculated
-src_cnt = 5 # number of secondary sources within the slit
+src_cnt = 100 # number of secondary sources within the slit
 w=0.05 # wavelength 
 b=0.05 # slit diameter 
 D=0.1 #distance from slit to wall 
@@ -24,7 +24,7 @@ def draw():
     #draw the intensity plot
     for o in range(-out_cnt/2, out_cnt/2, 1):
         x_o = (float(o)/out_cnt+0.5)*float(width)
-        stroke((intensity_plt[o]**2)*10)
+        stroke(intensity_plt[o]**2/src_cnt/2)
         line(x_o,height/4,x_o,height/5);
         
 def calculate_intensity_plt():
