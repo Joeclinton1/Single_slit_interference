@@ -20,14 +20,14 @@ def setup():
     line(width*(1-b)/2,3*height/4,width*(1+b)/2,3*height/4);
     
 def draw():
-    intensity_plt = calculate_intensity_plot()
+    intensity_plt = calculate_intensity_plt()
     #draw the intensity plot
     for o in range(-out_cnt/2, out_cnt/2):
         x_o = o*width/out_cnt
         stroke((intensity_plt[o]**2)/1000)
         line(width * (x_o + 1) /2,height/4,width * (x_o + 1) /2,height/5);
         
-def calculate_intensity_plot():
+def calculate_intensity_plt():
     intensity_plt = {}
     
     for o in range(-out_cnt/2, out_cnt/2): #Loop through wall output points
@@ -35,7 +35,7 @@ def calculate_intensity_plot():
         
         for s in range(-src_cnt/2,src_cnt/2,1): # Loop through secondary sources
             x_s= s*b/src_cnt #x position on source
-            path_dist = math.sqrt((x_o-x_s)**2+D**2) #Calculate path distance from secondary source to point on wall
+            path_dist = math.sqrt( (x_o-x_s)**2 + D**2) #Calculate path distance from secondary source to point on wall
             intensity= math.cos(path_dist/w*TWO_PI) #Find phase of wavelength with path distance and map from -1 to 1
             
             #sum intensity to the intensity plot
