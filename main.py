@@ -4,7 +4,7 @@ out_pt_count = 500 # number of output points to be calculated
 sec_source_count = 50 # number of secondary sources within the slit
 w=0.02 # wavelength/width
 b=0.01 # slit diameter/width
-D=500 #distance from slit to wall
+D=2000 #distance from slit to wall
 
 def setup():
     #draw the background lines
