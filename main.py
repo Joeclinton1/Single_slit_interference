@@ -4,11 +4,10 @@ out_pt_count = 500 # number of output points to be calculated
 sec_source_count = 50 # number of secondary sources within the slit
 w=0.02 # wavelength/width
 b=0.01 # slit diameter/width
-D=0 #distance from slit to wall
+D=500 #distance from slit to wall
 
 def setup():
     #draw the background lines
-    global D
     size(500,500) #width = 500, height = 500
     stroke(0)
     strokeWeight(2)
@@ -19,7 +18,6 @@ def setup():
     strokeWeight(1)
     stroke(200)
     line(width*(1-b)/2,3*height/4,width*(1+b)/2,3*height/4);
-    D=height*4 # sets distance to some arbitarily large value. 
     
 def draw():
     intensity_plot = {}
